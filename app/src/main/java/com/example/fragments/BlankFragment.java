@@ -57,21 +57,15 @@ public class BlankFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         // Inflate the layout for this fragment
         final View root = inflater.inflate(R.layout.fragment_blank, container, false);
-
         Button button = root.findViewById(R.id.hide_fragment);
-
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
