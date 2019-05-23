@@ -9,6 +9,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/bye_blank_fragment" />
+        android:text="@string/other" />
+
+    <Button
+        android:id="@+id/hide_fragment"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="@string/bye_blank_fragment"/>
 
 </FrameLayout>
