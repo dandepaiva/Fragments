@@ -57,6 +57,9 @@ public class BlankFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
@@ -65,7 +68,18 @@ public class BlankFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_blank, container, false);
+        final View root = inflater.inflate(R.layout.fragment_blank, container, false);
+
+        Button button = root.findViewById(R.id.hide_fragment);
+
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Log.d("tag", "ME CLICK BUTTON");
+                root.setVisibility(View.INVISIBLE);
+             }
+        });
+
         return root;
 
 
