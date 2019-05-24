@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment"> Hello, Dave!</string>
     <string name="bye_blank_fragment"> So long!</string>
     <string name="other"> Do not read this, please!</string>
+    <string name="welcome">Write a new message!</string>
 </resources>
