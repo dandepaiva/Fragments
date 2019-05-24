@@ -44,13 +44,12 @@ public class BlankFragment extends Fragment{
             @Override
             public void onClick(View v){
                 if(HIDE_THE_FRAGMENT) {
-                    Log.d("true", "ME CLICK BUTTON");
                     root.setVisibility(View.INVISIBLE);
                 } else {
-                    Log.d("false", "I ASTH CLICKETH THY BUTTON");
                     superCoolFunction(editText.getText().toString());
                 }
             }
+
         });
 
         return root;
@@ -74,7 +73,6 @@ public class BlankFragment extends Fragment{
     private void superCoolFunction(String string){
         if (callback != null) {
             callback.onTextChanged(string);
-            editText.setText(keepString);
         }
 
     }
