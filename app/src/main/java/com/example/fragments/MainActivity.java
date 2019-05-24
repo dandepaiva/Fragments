@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
 
 
         if (savedInstanceState != null){
-            String msg = savedInstanceState.getString(ACTIVITY_MESSAGE);
-            keepString = msg;
-            textView.setText(msg);
+            keepString = savedInstanceState.getString(ACTIVITY_MESSAGE);
+            textView.setText(keepString);
         }
 
 
