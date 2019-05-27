@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        keepString = getString(R.string.welcome);
+        //keepString = getString(R.string.welcome);
         textView = findViewById(R.id.dave);
 
          if (savedInstanceState != null){

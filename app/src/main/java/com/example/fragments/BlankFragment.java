@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,13 +40,18 @@ public class BlankFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
+
         Bundle args = getArguments();
-        keepString = args.getString(FRAGMENT_MESSAGE);
+        if(args!=null){
+            keepString = args.getString(FRAGMENT_MESSAGE);
+        }
 
         final View root = inflater.inflate(R.layout.fragment_blank, container, false);
         Button button = root.findViewById(R.id.hide_fragment);
         editText = root.findViewById(R.id.text_edit);
-        editText.setText(keepString);
+        if(!TextUtils.isEmpty(keepString)){
+            editText.setText(keepString);
+        }
 
 
 
