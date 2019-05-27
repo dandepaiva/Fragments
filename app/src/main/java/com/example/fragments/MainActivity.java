@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 
@@ -20,8 +21,7 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
         keepString = getString(R.string.welcome);
         textView = findViewById(R.id.dave);
 
-
-        if (savedInstanceState != null){
+         if (savedInstanceState != null){
             keepString = savedInstanceState.getString(ACTIVITY_MESSAGE);
             textView.setText(keepString);
         }
@@ -42,8 +42,14 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
 
     @Override
     public void onTextChanged(String text) {
+        keepString = text;
         textView.setText(text);
 
+    }
+
+    @Override
+    public void saveKeepString(String text) {
+        keepString = text;
     }
 
     @Override

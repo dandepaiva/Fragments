@@ -29,7 +29,6 @@ public class BlankFragment extends Fragment{
     }
 
     public static BlankFragment newInstance(String string) {
-
         Bundle args = new Bundle();
         args.putString(FRAGMENT_MESSAGE, string);
         BlankFragment fragment = new BlankFragment();
@@ -37,21 +36,20 @@ public class BlankFragment extends Fragment{
         return fragment;
     }
 
-    /*TODO
-    editText must persist through rotation
-     */
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Bundle args = getArguments();
+        keepString = args.getString(FRAGMENT_MESSAGE);
         // Inflate the layout for this fragment
         final View root = inflater.inflate(R.layout.fragment_blank, container, false);
 
         Button button = root.findViewById(R.id.hide_fragment);
         editText = root.findViewById(R.id.text_edit);
         editText.setText(keepString);
-        if (savedInstanceState != null) {
-            String aux = savedInstanceState.getString(FRAGMENT_MESSAGE);
-        }
+
+
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -60,7 +58,11 @@ public class BlankFragment extends Fragment{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                keepString = s.toString();
+                /*Log.d("CHANGE KEEPSTRING", "onTextChanged: keepString is "+s.toString());
+
+                if(callback != null){
+                    callback.saveKeepString(s.toString());
+                }*/
             }
 
             @Override
