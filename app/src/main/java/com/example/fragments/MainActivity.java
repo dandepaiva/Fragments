@@ -19,19 +19,16 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.dave);
+        textView = findViewById(R.id.view_text);
 
-         if (savedInstanceState != null){
+        if (savedInstanceState != null){
             fragmentString = savedInstanceState.getString(EDIT_TEXT_MESSAGE);
             textView.setText(savedInstanceState.getString(ACTIVITY_MESSAGE));
         }
 
-
         FragmentTransaction blankFragmentTransaction = blankFragmentManager.beginTransaction();
         blankFragmentTransaction.replace(R.id.fragment_blank, BlankFragment.newInstance(fragmentString));
         blankFragmentTransaction.commit();
-
-
     }
 
     @Override
@@ -39,14 +36,11 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
         super.onResume();
     }
 
-
     @Override
     public void sendText(String text) {
         fragmentString = text;
         textView.setText(text);
-
     }
-
 
     @Override
     public void onTextChanged(String text) {

@@ -1,7 +1,6 @@
 package com.example.fragments;
 
 
-import android.os.Bundle;
 
 public interface ComunicationInterface {
 

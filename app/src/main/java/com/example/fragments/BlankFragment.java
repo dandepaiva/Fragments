@@ -21,6 +21,7 @@ import android.widget.EditText;
 public class BlankFragment extends Fragment{
     public static final String FRAGMENT_MESSAGE = "com.example.fragments.FRAGMENT";
     private static final Boolean HIDE_THE_FRAGMENT = false;
+
     private ComunicationInterface callback;
     private EditText editText;
     private String editTextString;
@@ -52,8 +53,6 @@ public class BlankFragment extends Fragment{
             editText.setText(editTextString);
         }
 
-
-
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -77,6 +76,7 @@ public class BlankFragment extends Fragment{
             @Override
             public void onClick(View v){
                 if(HIDE_THE_FRAGMENT) {
+
                     root.setVisibility(View.INVISIBLE);
                 } else {
                     sendText(editText.getText().toString());
@@ -87,7 +87,6 @@ public class BlankFragment extends Fragment{
 
         return root;
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -107,7 +106,5 @@ public class BlankFragment extends Fragment{
         if (callback != null) {
             callback.sendText(string);
         }
-
     }
-
 }
