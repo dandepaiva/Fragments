@@ -38,12 +38,11 @@ public class BlankFragment extends Fragment{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         Bundle args = getArguments();
         keepString = args.getString(FRAGMENT_MESSAGE);
-        // Inflate the layout for this fragment
-        final View root = inflater.inflate(R.layout.fragment_blank, container, false);
 
+        final View root = inflater.inflate(R.layout.fragment_blank, container, false);
         Button button = root.findViewById(R.id.hide_fragment);
         editText = root.findViewById(R.id.text_edit);
         editText.setText(keepString);
@@ -58,11 +57,9 @@ public class BlankFragment extends Fragment{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                /*Log.d("CHANGE KEEPSTRING", "onTextChanged: keepString is "+s.toString());
-
                 if(callback != null){
                     callback.saveKeepString(s.toString());
-                }*/
+                }
             }
 
             @Override
@@ -98,7 +95,7 @@ public class BlankFragment extends Fragment{
     @Override
     public void onDetach() {
         callback = null;
-         super.onDetach();
+        super.onDetach();
     }
 
     private void superCoolFunction(String string){

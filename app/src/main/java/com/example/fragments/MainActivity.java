@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements ComunicationInterface {
     public static final String ACTIVITY_MESSAGE = "com.example.fragments.ACTIVITY";
+    public static final String BUNDLE_STRING = "com.example.fragments.BUNDLE_STRING";
+
     public final FragmentManager managerBlankFragment = getSupportFragmentManager();
     private TextView textView;
     private String keepString;
+    private String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +25,9 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
         textView = findViewById(R.id.dave);
 
          if (savedInstanceState != null){
-            keepString = savedInstanceState.getString(ACTIVITY_MESSAGE);
-            textView.setText(keepString);
+            keepString = savedInstanceState.getString(BUNDLE_STRING);
+            String textViewText = savedInstanceState.getString((ACTIVITY_MESSAGE));
+            textView.setText(textViewText);
         }
 
 
@@ -47,14 +51,17 @@ public class MainActivity extends AppCompatActivity implements ComunicationInter
 
     }
 
+
     @Override
     public void saveKeepString(String text) {
-        keepString = text;
+        this.text = text;
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString(ACTIVITY_MESSAGE, textView.getText().toString());
+        outState.putString(BUNDLE_STRING, text);
+
         super.onSaveInstanceState(outState);
     }
 }
