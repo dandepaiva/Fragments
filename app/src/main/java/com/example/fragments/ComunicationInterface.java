@@ -5,6 +5,6 @@ import android.os.Bundle;
 
 public interface ComunicationInterface {
 
+    void sendText(String text);
     void onTextChanged(String text);
-    void saveKeepString(String text);
 }

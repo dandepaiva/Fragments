@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ public class BlankFragment extends Fragment{
     private static final Boolean HIDE_THE_FRAGMENT = false;
     private ComunicationInterface callback;
     private EditText editText;
-    private String keepString;
+    private String editTextString;
 
     public BlankFragment() {
     }
@@ -43,14 +42,14 @@ public class BlankFragment extends Fragment{
 
         Bundle args = getArguments();
         if(args!=null){
-            keepString = args.getString(FRAGMENT_MESSAGE);
+            editTextString = args.getString(FRAGMENT_MESSAGE);
         }
 
         final View root = inflater.inflate(R.layout.fragment_blank, container, false);
         Button button = root.findViewById(R.id.hide_fragment);
         editText = root.findViewById(R.id.text_edit);
-        if(!TextUtils.isEmpty(keepString)){
-            editText.setText(keepString);
+        if(!TextUtils.isEmpty(editTextString)){
+            editText.setText(editTextString);
         }
 
 
@@ -64,7 +63,7 @@ public class BlankFragment extends Fragment{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(callback != null){
-                    callback.saveKeepString(s.toString());
+                    callback.onTextChanged(s.toString());
                 }
             }
 
@@ -80,7 +79,7 @@ public class BlankFragment extends Fragment{
                 if(HIDE_THE_FRAGMENT) {
                     root.setVisibility(View.INVISIBLE);
                 } else {
-                    superCoolFunction(editText.getText().toString());
+                    sendText(editText.getText().toString());
                 }
             }
 
@@ -104,9 +103,9 @@ public class BlankFragment extends Fragment{
         super.onDetach();
     }
 
-    private void superCoolFunction(String string){
+    private void sendText(String string){
         if (callback != null) {
-            callback.onTextChanged(string);
+            callback.sendText(string);
         }
 
     }
